@@ -1,0 +1,84 @@
+﻿@using proteinocn.Models;
+@{
+    ViewBag.Title = "urunozel";
+    Layout = "~/sablon.cshtml";
+}
+@foreach (var a in Model)
+{
+    <div class="urunmenu">
+        <div id="sol">
+            <img id="ana-resim" src="~/img/@a.urun_foto2" alt="">
+        </div>
+        <div id="sag">
+            <h1>@a.urun_ad</h1>
+            <h4>@a.urun_aciklama1</h4>
+            <img src="img/vejetaryen.png" alt=""><img src="img/glutensiz.png" alt="">
+            <h1 style="font-size: 16px;font-weight: 800;margin-top: 15px;">AROMA: </h1>
+            <div id="aromalar">
+                <div>
+                    <a href="">
+                        <div><p style="text-align: center;margin-top:5px;font-weight:600;font-size: 14px;">@a.urun_aroma</p></div>
+                    </a>
+                </div>
+                <div style="@(a.urun_aroma2 == null ? "display: none;" : "")">
+                    <a href="">
+                        <div><p style="text-align: center;margin-top:5px;font-weight:600;font-size: 14px;">@a.urun_aroma2</p></div>
+                    </a>
+                </div>
+                <div style="@(a.urun_aroma3 == null ? "display: none;" : "")">
+                    <a href="">
+                        <div><p style="text-align: center;margin-top:5px;font-weight:600;font-size: 14px;">@a.urun_aroma3</p></div>
+                    </a>
+                </div>
+                <div style="@(a.urun_aroma4 == null ? "display: none;" : "")">
+                    <a href="">
+                        <div><p style="text-align: center;margin-top:5px;font-weight:600;font-size: 14px;">@a.urun_aroma4</p></div>
+                    </a>
+                </div>
+                <div style="@(a.urun_aroma5 == null ? "display: none;" : "")">
+                    <a href="">
+                        <div><p style="text-align: center;margin-top:5px;font-weight:600;font-size: 14px;">@a.urun_aroma5</p></div>
+                    </a>
+                </div>
+            </div>
+            <h1 style="font-size: 16px;font-weight: 800;margin-top: 15px;">BOYUT: </h1>
+            <div id="boyut">
+                <a href="">
+                    <div>
+                        <p style="text-align: center;margin-top:5px;font-weight:600;font-size: 14px;">@a.urun_boyut</p>
+                    </div>
+                </a>
+                <a href="">
+                    <div>
+                        <p style="text-align: center;margin-top:5px;font-weight:600;font-size: 14px;">@a.urun_boyut2</p>
+                    </div>
+                </a>
+                <a href="">
+                    <div style="@(a.urun_boyut3 == null ? "display: none;" : "")">
+                        <p style="text-align: center;margin-top:5px;font-weight:600;font-size: 14px;">@a.urun_boyut3</p>
+                    </div>
+                </a>
+            </div>
+            <div id="fiyat">
+                <div><h1 style="font-size: 36px;font-weight: 800;">@a.urun_fiyat TL</h1></div>
+                
+            </div>
+            <div id="satinalma">
+                <div id="miktar">
+                    <button>-</button>
+                    <b href="">1</b>
+                    <button>+</button>
+                </div>
+                <a id="sepetekle" style="text-decoration:none;color:white" href="~/Burak/sepeteekle?id=@a.urun_id"><i class="fa fa-shopping-cart"></i> SEPETE EKLE</a>
+            </div>
+            <div style="width:90%;margin-top:30px">
+                <h1 style="font-size: 16px;font-weight: 800;margin-top: 15px;">AÇIKLAMA: </h1>
+                <p style="font-size: 20px; margin-top: 20px">@a.urun_aciklama2</p>
+            </div>
+            <div style="width:90%;margin-top:30px">
+                <h1 style="font-size: 16px;font-weight: 800;margin-top: 15px;">ÖZELLİKLER: </h1>
+                <p style="font-size: 20px; margin-top: 20px">@a.urun_ozellikler</p>
+            </div>
+        </div>
+    </div>
+}

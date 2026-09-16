@@ -1,0 +1,27 @@
+﻿@model IEnumerable<proteinocn.Models.urunTable>
+@{
+    ViewBag.Title = "Arama";
+    Layout = "~/sablon.cshtml";
+}
+
+@if (Model.Count() == 0)
+{
+    <div style="margin:15px auto;text-align:center"><p style="font-size:25px;font-weight:bold;color:red">Aradığınız Kriterlerde Bir Ürün Bulunamadı</p></div>
+}
+else
+{
+    <div id="proteinler">
+        @foreach (var a in Model)
+        {
+            <div class="proteinlerurun" style="margin-bottom:50px">
+                <a href="~/Burak/urunozel?gonderilenid=@a.urun_id">
+                    <div><img src="~/img/@a.urun_foto1" alt=""></div>
+                    <div style="height:25px"><h3>@a.urun_ad</h3></div>
+                    <div style="height:20px"><p>@a.urun_aciklama1</p></div>
+                    <div class="fiyat"><b>@string.Format("{0:c}", a.urun_fiyat)</b></div>
+                </a>
+                <div style="text-align:center"> <a href="~/Burak/sepeteekle?id=@a.urun_id"><button style="background-color: #16a0dd; border: none; padding: 10px; border-radius: 2px; font-size: 14px;cursor:pointer"><i style="margin-right:4px" class="fa fa-shopping-cart"></i>Sepete Ekle</button></a> </div>
+            </div>
+        }
+    </div>
+}

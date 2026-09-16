@@ -1,0 +1,274 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="proteinocnDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="adminTable">
+          <Key>
+            <PropertyRef Name="admin_ad" />
+          </Key>
+          <Property Name="admin_ad" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="admin_sifre" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sepetTable">
+          <Key>
+            <PropertyRef Name="sepet_id" />
+          </Key>
+          <Property Name="sepet_id" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="urun_id" Type="smallint" />
+          <Property Name="uye_id" Type="smallint" />
+        </EntityType>
+        <EntityType Name="urunTable">
+          <Key>
+            <PropertyRef Name="urun_id" />
+          </Key>
+          <Property Name="urun_id" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="urun_ad" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="urun_aroma" Type="nvarchar" MaxLength="50" />
+          <Property Name="urun_boyut" Type="nvarchar" MaxLength="50" />
+          <Property Name="urun_fiyat" Type="int" Nullable="false" />
+          <Property Name="urun_aciklama1" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="urun_aciklama2" Type="nvarchar" MaxLength="250" />
+          <Property Name="urun_foto1" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="urun_foto2" Type="nvarchar" MaxLength="50" />
+          <Property Name="urun_kategori" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="urun_aroma2" Type="nvarchar" MaxLength="50" />
+          <Property Name="urun_aroma3" Type="nvarchar" MaxLength="50" />
+          <Property Name="urun_aroma4" Type="nvarchar" MaxLength="50" />
+          <Property Name="urun_aroma5" Type="nvarchar" MaxLength="50" />
+          <Property Name="urun_boyut2" Type="nvarchar" MaxLength="50" />
+          <Property Name="urun_boyut3" Type="nvarchar" MaxLength="50" />
+          <Property Name="urun_ozellikler" Type="nvarchar" MaxLength="800" />
+        </EntityType>
+        <EntityType Name="uyeTable">
+          <Key>
+            <PropertyRef Name="uye_id" />
+          </Key>
+          <Property Name="uye_id" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="uye_ad" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="uye_sifre" Type="nchar" MaxLength="16" Nullable="false" />
+          <Property Name="uye_eposta" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="uye_adres" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="uye_telno" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_sepetTable_urunTable">
+          <End Role="urunTable" Type="Self.urunTable" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="sepetTable" Type="Self.sepetTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="urunTable">
+              <PropertyRef Name="urun_id" />
+            </Principal>
+            <Dependent Role="sepetTable">
+              <PropertyRef Name="urun_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sepetTable_uyeTable">
+          <End Role="uyeTable" Type="Self.uyeTable" Multiplicity="0..1" />
+          <End Role="sepetTable" Type="Self.sepetTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="uyeTable">
+              <PropertyRef Name="uye_id" />
+            </Principal>
+            <Dependent Role="sepetTable">
+              <PropertyRef Name="uye_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="proteinocnDBModelStoreContainer">
+          <EntitySet Name="adminTable" EntityType="Self.adminTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sepetTable" EntityType="Self.sepetTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="urunTable" EntityType="Self.urunTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="uyeTable" EntityType="Self.uyeTable" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_sepetTable_urunTable" Association="Self.FK_sepetTable_urunTable">
+            <End Role="urunTable" EntitySet="urunTable" />
+            <End Role="sepetTable" EntitySet="sepetTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sepetTable_uyeTable" Association="Self.FK_sepetTable_uyeTable">
+            <End Role="uyeTable" EntitySet="uyeTable" />
+            <End Role="sepetTable" EntitySet="sepetTable" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="proteinocnDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="adminTable">
+          <Key>
+            <PropertyRef Name="admin_ad" />
+          </Key>
+          <Property Name="admin_ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="admin_sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sepetTable">
+          <Key>
+            <PropertyRef Name="sepet_id" />
+          </Key>
+          <Property Name="sepet_id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="urun_id" Type="Int16" />
+          <Property Name="uye_id" Type="Int16" />
+          <NavigationProperty Name="urunTable" Relationship="Self.FK_sepetTable_urunTable" FromRole="sepetTable" ToRole="urunTable" />
+          <NavigationProperty Name="uyeTable" Relationship="Self.FK_sepetTable_uyeTable" FromRole="sepetTable" ToRole="uyeTable" />
+        </EntityType>
+        <EntityType Name="urunTable">
+          <Key>
+            <PropertyRef Name="urun_id" />
+          </Key>
+          <Property Name="urun_id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="urun_ad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="urun_aroma" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="urun_boyut" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="urun_fiyat" Type="Int32" Nullable="false" />
+          <Property Name="urun_aciklama1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="urun_aciklama2" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="urun_foto1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="urun_foto2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="urun_kategori" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="urun_aroma2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="urun_aroma3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="urun_aroma4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="urun_aroma5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="urun_boyut2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="urun_boyut3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="urun_ozellikler" Type="String" MaxLength="800" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="sepetTable" Relationship="Self.FK_sepetTable_urunTable" FromRole="urunTable" ToRole="sepetTable" />
+        </EntityType>
+        <EntityType Name="uyeTable">
+          <Key>
+            <PropertyRef Name="uye_id" />
+          </Key>
+          <Property Name="uye_id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="uye_ad" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="uye_sifre" Type="String" MaxLength="16" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="uye_eposta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="uye_adres" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="uye_telno" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="sepetTable" Relationship="Self.FK_sepetTable_uyeTable" FromRole="uyeTable" ToRole="sepetTable" />
+        </EntityType>
+        <Association Name="FK_sepetTable_urunTable">
+          <End Role="urunTable" Type="Self.urunTable" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="sepetTable" Type="Self.sepetTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="urunTable">
+              <PropertyRef Name="urun_id" />
+            </Principal>
+            <Dependent Role="sepetTable">
+              <PropertyRef Name="urun_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sepetTable_uyeTable">
+          <End Role="uyeTable" Type="Self.uyeTable" Multiplicity="0..1" />
+          <End Role="sepetTable" Type="Self.sepetTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="uyeTable">
+              <PropertyRef Name="uye_id" />
+            </Principal>
+            <Dependent Role="sepetTable">
+              <PropertyRef Name="uye_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="proteinocnDBEntities4" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="adminTable" EntityType="Self.adminTable" />
+          <EntitySet Name="sepetTable" EntityType="Self.sepetTable" />
+          <EntitySet Name="urunTable" EntityType="Self.urunTable" />
+          <EntitySet Name="uyeTable" EntityType="Self.uyeTable" />
+          <AssociationSet Name="FK_sepetTable_urunTable" Association="Self.FK_sepetTable_urunTable">
+            <End Role="urunTable" EntitySet="urunTable" />
+            <End Role="sepetTable" EntitySet="sepetTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sepetTable_uyeTable" Association="Self.FK_sepetTable_uyeTable">
+            <End Role="uyeTable" EntitySet="uyeTable" />
+            <End Role="sepetTable" EntitySet="sepetTable" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="proteinocnDBModelStoreContainer" CdmEntityContainer="proteinocnDBEntities4">
+          <EntitySetMapping Name="adminTable">
+            <EntityTypeMapping TypeName="proteinocnDBModel.adminTable">
+              <MappingFragment StoreEntitySet="adminTable">
+                <ScalarProperty Name="admin_ad" ColumnName="admin_ad" />
+                <ScalarProperty Name="admin_sifre" ColumnName="admin_sifre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sepetTable">
+            <EntityTypeMapping TypeName="proteinocnDBModel.sepetTable">
+              <MappingFragment StoreEntitySet="sepetTable">
+                <ScalarProperty Name="sepet_id" ColumnName="sepet_id" />
+                <ScalarProperty Name="urun_id" ColumnName="urun_id" />
+                <ScalarProperty Name="uye_id" ColumnName="uye_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="urunTable">
+            <EntityTypeMapping TypeName="proteinocnDBModel.urunTable">
+              <MappingFragment StoreEntitySet="urunTable">
+                <ScalarProperty Name="urun_id" ColumnName="urun_id" />
+                <ScalarProperty Name="urun_ad" ColumnName="urun_ad" />
+                <ScalarProperty Name="urun_aroma" ColumnName="urun_aroma" />
+                <ScalarProperty Name="urun_boyut" ColumnName="urun_boyut" />
+                <ScalarProperty Name="urun_fiyat" ColumnName="urun_fiyat" />
+                <ScalarProperty Name="urun_aciklama1" ColumnName="urun_aciklama1" />
+                <ScalarProperty Name="urun_aciklama2" ColumnName="urun_aciklama2" />
+                <ScalarProperty Name="urun_foto1" ColumnName="urun_foto1" />
+                <ScalarProperty Name="urun_foto2" ColumnName="urun_foto2" />
+                <ScalarProperty Name="urun_kategori" ColumnName="urun_kategori" />
+                <ScalarProperty Name="urun_aroma2" ColumnName="urun_aroma2" />
+                <ScalarProperty Name="urun_aroma3" ColumnName="urun_aroma3" />
+                <ScalarProperty Name="urun_aroma4" ColumnName="urun_aroma4" />
+                <ScalarProperty Name="urun_aroma5" ColumnName="urun_aroma5" />
+                <ScalarProperty Name="urun_boyut2" ColumnName="urun_boyut2" />
+                <ScalarProperty Name="urun_boyut3" ColumnName="urun_boyut3" />
+                <ScalarProperty Name="urun_ozellikler" ColumnName="urun_ozellikler" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="uyeTable">
+            <EntityTypeMapping TypeName="proteinocnDBModel.uyeTable">
+              <MappingFragment StoreEntitySet="uyeTable">
+                <ScalarProperty Name="uye_id" ColumnName="uye_id" />
+                <ScalarProperty Name="uye_ad" ColumnName="uye_ad" />
+                <ScalarProperty Name="uye_sifre" ColumnName="uye_sifre" />
+                <ScalarProperty Name="uye_eposta" ColumnName="uye_eposta" />
+                <ScalarProperty Name="uye_adres" ColumnName="uye_adres" />
+                <ScalarProperty Name="uye_telno" ColumnName="uye_telno" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,76 @@
+﻿
+@{
+    ViewBag.Title = "sepet";
+    Layout = "~/sablon.cshtml";
+}
+
+
+<div style="width:50%;margin:0px auto;">
+    <div style="padding: 10px;">
+        <h4 style="font-size:24px">Alışveriş Sepeti</h4>
+    </div>
+    <div style="padding: 10px; text-align: right;">
+        <p>Fiyat</p>
+    </div>
+
+    @foreach (var sepet_urun in Model)
+    {
+        <div class="row" style="border-top: 1px solid #ccc; padding: 20px 10px;display:flex">
+            <div style="width:25%">
+                <img src="~/img/@sepet_urun.urunTable.urun_foto1" alt="Alternate Text" width="100%" />
+            </div>
+            <div style="width: 50%; font-size: 16px">
+                <h4>@sepet_urun.urunTable.urun_ad</h4>
+                <p style="color:gray">@sepet_urun.urunTable.urun_aciklama1</p>
+                <label>
+                    <input type="checkbox" name="name" value="" /> Hediye Paketi Yapılsın
+                </label>
+                <p style="color:darkorange">1000 TL Üzeri Kargo Bedava</p>
+                <select class="adt" onchange="toplamfiyat()" style="padding: 0px 10px; text-align: left">
+                    @for (int i = 1; i < 10; i++)
+                    {
+                        <option value="@i">@i</option>
+                    }
+                </select>
+            </div>
+            <div style="text-align:right;width:25%">
+                <h5 class="fyt" style="font-size:24px" id="sonf">@sepet_urun.urunTable.urun_fiyat TL</h5>
+                <a href="~/Burak/sepettencikar?id=@sepet_urun.urun_id" style="text-decoration:none;color:red"><i class="fa fa-trash"></i> Sil</a>
+            </div>
+        </div>
+
+    }
+
+    <div style="text-align:right">
+        <h5 style="font-size:20px" id="sepet-toplam"></h5>
+    </div>
+
+
+</div>
+
+<script>
+    function urun_hesaplama() {
+        let tfiyat = 0;
+
+        let adetler = document.getElementsByClassName("adt");
+        let fiyatlar = document.getElementsByClassName("fyt");
+
+        for (let a = 0; a < adetler.length; a++) {
+            let adet = parseInt(adetler[a].value);
+            let fiyat = parseInt(fiyatlar[a].innerHTML);
+
+            tfiyat += adet * fiyat;
+
+
+        }
+
+        document.getElementById("sepet-toplam").innerHTML =
+            "Ara Toplam (" + adetler.length + " Ürün): " + tfiyat + " TL";
+    }
+
+    window.onload = urun_hesaplama;
+
+    function toplamfiyat() {
+        urun_hesaplama()
+    }
+</script>

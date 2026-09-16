@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "girisyap";
+    Layout = "~/sablon.cshtml";
+}
+
+<div id="girisyap">
+    <form method="post">
+        <label for="kad">*Kullanıcı Adı</label>
+        <input type="text" name="kad" id="kad" required>
+        <label for="sfr">*Şifre</label>
+        <input type="password" name="sifre" id="sfr" required>
+        <p><a style="color: black;" href="">Şifremi Unuttum?</a></p>
+        <input type="submit" value="GİRİŞ YAP">
+        <p style="color:red;font-size:12px">@ViewBag.hata2</p>
+    </form>
+</div>

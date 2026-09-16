@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewBag.Title = "iletisim";
+    Layout = "~/sablon.cshtml";
+}
+
+<div id="iletisim">
+    <div>
+        <h1 style="font-size: 44px;font-weight: 800;text-align: center;">Bize Ulaşın</h1>
+    </div>
+    <div>
+        <a href="https://api.whatsapp.com/send/?phone=905543432326&text&type=phone_number&app_absent=0"><img src="img/whatsapiletisim.webp" alt=""></a>
+    </div>
+    <details>
+        <summary><b>İletişim Formu</b></summary>
+        <div id="iletisimform">
+            <form action="formgonder.html">
+                <p style="margin-bottom: 20px;">Bize aşağıdaki iletişim formundan veya <b style="color: cornflowerblue;">destek@proteinocean.com</b> e-posta adresinden ulaşabilirsiniz.</p>
+                <input type="text" name="isim" id="" placeholder="İsim *" required>
+                <input type="text" name="soyad" id="" placeholder="Soyad *" required>
+                <input type="email" name="eposta" id="" placeholder="E-Posta *" required>
+                <input type="text" name="adres" id="" placeholder="Adres *" required>
+                <textarea name="mesaj" id="" cols="20" rows="8" placeholder="Mesaj *" required></textarea>
+                <div style="text-align: center;">
+                    <input type="submit" value="GÖNDER"></input>
+                </div>
+            </form>
+        </div>
+    </details>
+    <div id="iletisimbilgi">
+        <div style="width: 80%;margin: 35px auto;">
+            <p>
+                *Aynı gün kargo hafta içi 16:00, Cumartesi ise 11:00' a kadar verilen siparişler icin geçerlidir.
+                Siparişler kargoya verilince e-posta ve sms ile bilgilendirme yapılır.
+            </p>
+        </div>
+        <div style="width: 95%;margin: 25px auto;">
+            <p>
+                Telefon ile <b>0850 303 29 89</b> numarasını arayarak da bizlere sesli mesaj bırakabilirsiniz . Sesli mesajlarınıza hafta içi saat
+                <b>09:00-17:00</b> arasında dönüş sağlanmaktadır.
+            </p>
+        </div>
+    </div>
+    <div id="urunlerikesfet">
+        <div>
+            <form action="~/Burak/tumurunler">
+                <input style="cursor: pointer;" type="submit" value="Ürünleri Keşfet" name="" id="">
+            </form>
+        </div>
+    </div>
+    <div id="konum" style="width:80%;;margin: 40px auto;">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3057.3998192710105!2d32.75032987593302!3d39.97716957151361!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14d349ad0a062323%3A0x10bbd5a53500c71f!2sProteinocean!5e0!3m2!1str!2str!4v1765730893597!5m2!1str!2str" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+</div>

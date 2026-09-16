@@ -1,0 +1,137 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <!-- Latest compiled and minified CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width" />
+    <title>adminguncelle</title>
+    <style>
+        form div{
+            padding:10px;
+        }
+        form label{
+            margin-bottom:5px;
+            color:blue;
+        }
+        form input,label{
+            font-weight:500;
+        }
+    </style>
+</head>
+<body>
+        <nav class="navbar navbar-expand-sm navbar-light bg-light">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="mynavbar">
+                    <h4 class="navbar-brand me-auto"><a href="~/Burak/adminana"><img src="~/img/adminfoto.webp" width="80px" alt="" /></a></h4>
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="~/Burak/adminana">Ürünler</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Üyeler</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Ürün Ekle</a>
+                        </li>
+                    </ul>
+                    <div class="text-end">
+                        <p style="display: inline; margin-right: 20px;">Hoş Geldiniz <b style="color:blue;font-size:20px;margin-left:4px"> @Session["admin_kullanici_adi"] </b> </p>
+                        <a href="~/Burak/cikis" class="text-danger" style="text-decoration:none; color:black;">Çıkış Yap</a>
+
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <hr />
+        <div class="container-fluid">
+            @foreach (var deger in Model)
+            {
+                <form method="post">
+                    <input type="hidden" name="urunid" value="@deger.urun_id" />
+
+                    <div class="form-group">
+                        <label>Ürün Adı</label>
+                        <input class="form-control" type="text" name="ad" value="@deger.urun_ad" />
+                    </div>
+                    <div class="form-group">
+                        <label>Ürün Fiyat</label>
+                        <input class="form-control" type="text" name="fiyat" value="@deger.urun_fiyat" />
+                    </div>
+                    <div class="form-group">
+                        <label>Ürün Açıklama 1</label>
+                        <input class="form-control" type="text" name="aciklama1" value="@deger.urun_aciklama1" />
+                    </div>
+                    <div class="form-group">
+                        <label>Ürün Açıklama 2</label>
+                        <input class="form-control" type="text" name="aciklama2" value="@deger.urun_aciklama2" />
+                    </div>
+                    <div class="form-group">
+                        <label>Ürün Foto 1</label>
+                        <input class="form-control" type="text" name="foto1" value="@deger.urun_foto1" />
+                    </div>
+                    <div class="form-group">
+                        <label>Ürün Foto 2</label>
+                        <input class="form-control" type="text" name="foto2" value="@deger.urun_foto2" />
+                    </div>
+                    <div class="form-group">
+                        <label>Ürün Kategori</label>
+                        <input class="form-control" type="text" name="kategori" value="@deger.urun_kategori" />
+                    </div>
+                    <div class="form-group">
+                        <label>Ürün Aroma 1</label>
+                        <input class="form-control" type="text" name="aroma1" value="@deger.urun_aroma" />
+                    </div>
+                    <div class="form-group">
+                        <label>Ürün Aroma 2</label>
+                        <input class="form-control" type="text" name="aroma2" value="@deger.urun_aroma2" />
+                    </div>
+                    <div class="form-group">
+                        <label>Ürün Aroma 3</label>
+                        <input class="form-control" type="text" name="aroma3" value="@deger.urun_aroma3" />
+                    </div>
+                    <div class="form-group">
+                        <label>Ürün Aroma 4</label>
+                        <input class="form-control" type="text" name="aroma4" value="@deger.urun_aroma4" />
+                    </div>
+                    <div class="form-group">
+                        <label>Ürün Aroma 5</label>
+                        <input class="form-control" type="text" name="aroma5" value="@deger.urun_aroma5" />
+                    </div>
+                    <div class="form-group">
+                        <label>Ürün Boyut 1</label>
+                        <input class="form-control" type="text" name="boyut1" value="@deger.urun_boyut" />
+                    </div>
+                    <div class="form-group">
+                        <label>Ürün Boyut 2</label>
+                        <input class="form-control" type="text" name="boyut2" value="@deger.urun_boyut2" />
+                    </div>
+                    <div class="form-group">
+                        <label>Ürün Boyut 3</label>
+                        <input class="form-control" type="text" name="boyut3" value="@deger.urun_boyut3" />
+                    </div>
+                    <div class="form-group">
+                        <label>Ürün Özellikler</label>
+                        <input class="form-control" type="text" name="ozellikler" value="@deger.urun_ozellikler" />
+                    </div>
+                    <div>
+                        <button class="btn btn-success">Gönder</button>
+                    </div>
+                </form>
+            }
+        </div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "uyeol";
+    Layout = "~/sablon.cshtml";
+}
+
+<div id="uyeol">
+    <form method="post">
+        <p style="color:red;font-size:25px">@ViewBag.mesaj</p>
+        <label for="ad">*Kullanıcı Adı</label>
+        <input type="text" name="ad" id="ad" required>
+        <label for="email">*E-Posta</label>
+        <input type="email" name="eposta" id="email" placeholder="aaa@gmail.com" required>
+        <label for="sfr">*Şifre</label>
+        <input type="password" name="sifre" minlenght="8" maxlength="16" id="sfr" required>
+        <label for="sfr2">*Şifre Tekrar</label>
+        <input type="password" name="sifre2" minlenght="8" maxlength="16" id="sfr2" required>
+        <label for="adres">*Adres</label>
+        <input type="text" name="adres" id="adres" required>
+        <label for="telno">*Tel No</label>
+        <input type="tel" name="telno" id="telno" placeholder="(5**) *** ** **" minlenght="10" maxlength="10" required>
+        <input type="submit" value="ÜYE OL">
+        <div>
+            <label style="color: gray;font-weight: 200;font-size: 13px;"><input type="checkbox" name="kampanyaonay" id="" required>Kampanyalardan haberdar olmak için <a style="color: black;text-decoration: underline;font-weight: 800;cursor: pointer;">Ticari Elektronik İleti Onayı</a> metnini okudum, onaylıyorum. Tarafınızdan gönderilecek ticari elektronik iletileri almak istiyorum</label>
+        </div>
+        <div>
+            <label style="color: gray;font-weight: 200;font-size: 13px;"><input type="checkbox" name="sözlesmekvkk" id="" required><a style="color: black;text-decoration: underline;font-weight: 800;cursor: pointer;">Üyelik sözleşmesini</a> ve <a style="color: black;text-decoration: underline;font-weight: 800;cursor: pointer;">KVKK Aydınlatma Metnini</a> okudum, kabul ediyorum.</label>
+        </div>
+        <h4>Zaten hesabınız var mı? <a style="text-decoration: none;color: blue;" href="~/Burak/girisyap">Giriş Yap</a> </h4>
+    </form>
+</div>
+
