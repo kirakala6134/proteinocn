@@ -1,5 +1,10 @@
 # proteinocn
+Proteinocean e-ticaret sitesinin arayüzünü örnek alan, öğrenme amaçlı hazırlanmış bir klon web sitesidir. Orijinal marka ile herhangi bir bağlantısı yoktur.
 
-Karahisar Parfüm'ün bir benzeri ama bu sefer direkt bir siteyi kopyalamayı hedefledim ve Karahisar Parfüm'e göre daha özgür bir ortamda geliştirdim.
+Amaç: Gerçek bir e-ticaret sitesinin sayfa yapısını ve tasarımını inceleyip HTML ve CSS ile yeniden oluşturmak.
 
-proteinocn'ın temel sayfaları, ürün özellikleri, admin sayfaları olduğu gibi bulunmakta.
+Özellikler: Gerçek bir e-ticaret sitesinden örnek alınmış sayfa düzeni ve tasarım
+Ürünlerin listelendiği, kategorilere ayrılmış mağaza yapısı
+Farklı ekran boyutlarına uyumlu arayüz
+
+Kullanılan teknolojiler: HTML, CSS
